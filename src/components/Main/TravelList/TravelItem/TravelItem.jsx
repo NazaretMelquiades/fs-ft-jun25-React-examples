@@ -2,7 +2,7 @@ import React from "react";
 import './TravelItem.css'
 
 // const TravelItem = ({title,price}) => {
-const TravelItem = ({data}) => {
+const TravelItem = ({data,remove}) => {
   
   const {title,description,price,img_url} = data;
   
@@ -11,7 +11,7 @@ const TravelItem = ({data}) => {
           <p>{description}</p>
           <p>{price}</p>
           <img className="picture_item" src={img_url} alt={title} />
-          <button onClick={()=>alert("Destino borrado")}>Borrar</button>
+          <button onClick={remove}>Borrar</button>
         </article>;
 };
 

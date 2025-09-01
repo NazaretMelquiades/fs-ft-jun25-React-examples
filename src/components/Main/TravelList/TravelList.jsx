@@ -1,34 +1,9 @@
 import React,{useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import TravelItem from './TravelItem'
+import data from './data.js'; // Importar array de datos iniciales 
 
 const TravelList = () => {
-  const datos = [
-    {
-      title: "Viaje a la playa",
-      description: "Disfruta de unas vacaciones en la playa",
-      price: 100,
-      img_url: "https://images.pexels.com/photos/1449767/pexels-photo-1449767.jpeg"
-    },
-    {
-      title: "Viaje a la montaña",
-      description: "Escápate a la montaña y disfruta de la naturaleza",
-      price: 150,
-      img_url: "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg"
-    },
-    {
-      title: "Viaje a la ciudad",
-      description: "Descubre las maravillas de la ciudad",
-      price: 200,
-      img_url: "https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg"
-    },
-    {
-      title: "Viaje a la selva",
-      description: "Aventura en la selva",
-      price: 250,
-      img_url: "https://png.pngtree.com/background/20230616/original/pngtree-lush-and-tropical-rainforest-picture-image_3622369.jpg"
-    }
-  ];
 
   // Estado inicial del formulario
   const [values, setValues] = useState({
@@ -37,9 +12,31 @@ const TravelList = () => {
     price: 0,
     img_url: ""
   });
+  
+  // Estado inicial array de destinos
+  // Estado --> items
+  const [items,setItems] = useState(data); // [{},{},{},{}] --> []
 
+  const paintData = () => items.map((item,index)=> <TravelItem data={item} remove={()=>removeItem(index)} key={uuidv4()}/>)
 
-  const paintData = () => datos.map((item,index)=> <TravelItem data={item} key={uuidv4()}/>)
+  // new_item --> objeto a añadir a la lista
+  const addItem = (new_item) => setItems([...items,new_item]);
+
+  const removeAllItems = () => setItems([]);
+  const resetItems = () => setItems(data);
+  const removeItem = (i) => {
+    const answer = confirm("quieres borrar el elemento?");
+    if(answer){
+      const remainingItems = items.filter((item,index)=> index!==i);
+      setItems(remainingItems); //carga el estado con los items restantes
+      alert("Destino borrado");
+    }
+    else{
+      alert("operacíon anulada");
+      return;
+    }
+  };
+
 
   const handleChange = (e) => {
     setValues({
@@ -51,8 +48,17 @@ const TravelList = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(values);
-    console.log(e.target.title.value);
-    console.log(e.target.price.value);
+    const title = e.target.title.value;
+    const price = e.target.price.value;
+    console.log(title);
+    console.log(price);
+    alert(title+"-"+price);
+
+    // values --> estado actual de datos del form
+    addItem(values); // Añade nuevo destino en el estado
+  
+    // POST a una API
+    //...
   };
 
 
@@ -76,6 +82,10 @@ const TravelList = () => {
        <b>Rellena todos los campos para poder enviar</b>
        }
       </form>
+
+      <button onClick={removeAllItems}>Borrar todo</button>
+      <button onClick={resetItems}>Recargar</button>
+
 
             {paintData()}
 
