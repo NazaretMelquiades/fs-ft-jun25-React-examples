@@ -7,6 +7,7 @@ import Home from "./Home";
 import NotFound from "./NotFound";
 import Staff from "./Staff";
 import Topic from "./Topic";
+import WishList from "./WishList";
 
 const Main = () => {
   return (
@@ -19,6 +20,7 @@ const Main = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/staff" element={<Staff />} />
         <Route path="/topic" element={<Topic/>} />
+        <Route path="/wishlist" element={<WishList/>} />
         <Route path="/*" element={<NotFound/>} />
       </Routes>
     </main>

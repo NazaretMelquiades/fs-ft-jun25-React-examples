@@ -10,6 +10,7 @@ const Nav = () => {
                 <li><Link to='/contact'>Contacto</Link></li >
                 <li><Link to='/staff'>Equipo</Link></li >
                 <li><Link to='/topic'>Topic</Link></li >
+                <li><Link to='/wishlist'>Deseos</Link></li >
             </ul>
           </nav>;
 };
