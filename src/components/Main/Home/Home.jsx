@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import reactLogo from "../../../assets/react.svg";
 import viteLogo from "/vite.svg";
 
+import { UserContext } from '../../../context/UserContext'
+
+
 const Home = () => {
-  const [count, setCount] = useState(100); // hook de estado
+  // Consumir el contexto de usuario
+  const { updateUsername } = useContext(UserContext);
+  const [newUsername, setNewUsername] = useState('');
+
+  const handleInputChange = (e) => {
+    setNewUsername(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUsername(newUsername);
+    setNewUsername('');
+  };
 
   return (
     <div>
@@ -16,15 +31,13 @@ const Home = () => {
         </a>
       </div>
       <h1>Verano FullStack!</h1>
-      <div className="card">
-        <button onClick={() => setCount(count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR - Queso!!!
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <h2>Update Username</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={newUsername} onChange={handleInputChange} />
+        <button type="submit">Update</button>
+      </form>
+
     </div>
   );
 };
