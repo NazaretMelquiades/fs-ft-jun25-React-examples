@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import { Link } from 'react-router-dom';
+
 import reactLogo from "../../../assets/react.svg";
 import viteLogo from "/vite.svg";
 
@@ -37,6 +39,11 @@ const Home = () => {
         <input type="text" value={newUsername} onChange={handleInputChange} />
         <button type="submit">Update</button>
       </form>
+      
+      <Link to='/product/2?limit=2'>Producto 2</Link>
+      <Link to='/product/3?limit=2'>Producto 3</Link>
+      <Link to='/product/4?limit=2'>Producto 4</Link>
+      <Link to='/product/5?limit=2'>Producto 5</Link>
 
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import './TravelItem.css'
+// import './TravelItem.css'
 
 // const TravelItem = ({title,price}) => {
 const TravelItem = ({data,remove}) => {

@@ -13,8 +13,7 @@ const Header = () => {
   const handleOnClick = () => navigate("/");
 
   return (
-    <header>
-      Header
+    <header className='header-day'>
       <Nav />
       {username ? 
         <>

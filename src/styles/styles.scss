@@ -1,0 +1,20 @@
+// Fichero de estilos principal
+// Aquí poner todas las hojas de estilos usadas por la app
+
+@use './views/App';
+
+@use './components/Header';
+@use './components/Nav';
+@use './components/Staff';
+@use './components/Footer';
+@use './components/PokemonCard';
+@use './components/TravelItem';
+
+
+// Aquí se debería dar estilos a cada componente de la app
+// @use './components/Footer';
+// @use './components/Main';
+// etc...
+
+
+

@@ -8,6 +8,7 @@ import NotFound from "./NotFound";
 import Staff from "./Staff";
 import Topic from "./Topic";
 import WishList from "./WishList";
+import ProductDetail from "./ProductDetail";
 
 const Main = () => {
   return (
@@ -21,6 +22,7 @@ const Main = () => {
         <Route path="/staff" element={<Staff />} />
         <Route path="/topic" element={<Topic/>} />
         <Route path="/wishlist" element={<WishList/>} />
+        <Route path="/product/:id" element={<ProductDetail/>} />
         <Route path="/*" element={<NotFound/>} />
       </Routes>
     </main>
